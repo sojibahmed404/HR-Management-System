@@ -59,12 +59,6 @@ if (!isset($breadcrumb)) {
       </div>
 
       <div class="topbar-right">
-        <!-- Live System Status -->
-        <div class="system-status-pill">
-          <span class="pulse-dot"></span>
-          <span>Database: hr_db</span>
-        </div>
-
         <!-- Date Chip -->
         <div class="date-chip">
           <i class="fa-regular fa-calendar-days text-primary"></i>
