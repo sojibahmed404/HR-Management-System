@@ -1,7 +1,7 @@
 <?php
 /**
  * Global Header Component
- * Apex HR Management System
+ * NexByte Technologies Ltd.
  */
 if (!isset($page_title)) {
     $page_title = 'HR Dashboard';
@@ -15,7 +15,10 @@ if (!isset($breadcrumb)) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo htmlspecialchars($page_title); ?> | Apex HR Management</title>
+  <title><?php echo htmlspecialchars($page_title); ?> | NexByte Technologies Ltd.</title>
+
+  <!-- Web Icon / Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
   <!-- Google Font: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,28 +39,40 @@ if (!isset($breadcrumb)) {
 
   <!-- Main Content Wrapper -->
   <main class="app-main">
-    <!-- Topbar -->
+    <!-- Sleek Formatted Topbar -->
     <header class="app-topbar">
       <div class="topbar-left">
         <button type="button" id="toggleSidebar" class="btn-icon d-lg-none" aria-label="Toggle Sidebar" style="display:none;">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div class="page-title">
-          <h1><?php echo htmlspecialchars($page_title); ?></h1>
           <div class="page-breadcrumb">
-            <span>Apex HRM</span>
-            <span>/</span>
-            <span style="color:var(--primary); font-weight:600;"><?php echo htmlspecialchars($breadcrumb); ?></span>
+            <span class="company-badge">
+              <img src="assets/images/logo.png" style="width:14px; height:14px; object-fit:contain;" alt="logo">
+              NexByte Technologies
+            </span>
+            <span class="breadcrumb-slash">/</span>
+            <span class="active-crumb"><?php echo htmlspecialchars($breadcrumb); ?></span>
           </div>
+          <h1><?php echo htmlspecialchars($page_title); ?></h1>
         </div>
       </div>
 
       <div class="topbar-right">
-        <div class="db-pill">
+        <!-- Live System Status -->
+        <div class="system-status-pill">
           <span class="pulse-dot"></span>
           <span>Database: hr_db</span>
         </div>
-        <a href="add_employee.php" class="btn-primary-custom">
+
+        <!-- Date Chip -->
+        <div class="date-chip">
+          <i class="fa-regular fa-calendar-days text-primary"></i>
+          <span><?php echo date('D, d M Y'); ?></span>
+        </div>
+
+        <!-- Add Employee Button -->
+        <a href="add_employee.php" class="btn-primary-custom" style="padding:7px 15px; font-size:0.82rem;">
           <i class="fa-solid fa-plus"></i>
           <span>Add Employee</span>
         </a>
@@ -65,4 +80,3 @@ if (!isset($breadcrumb)) {
     </header>
 
     <div class="content-body">
-

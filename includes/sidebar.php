@@ -1,22 +1,23 @@
 <?php
 /**
  * Corporate HR Sidebar Navigation
+ * NexByte Technologies Ltd.
  */
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <aside class="app-sidebar" id="appSidebar">
   <!-- Brand / Header -->
   <div class="sidebar-header">
-    <div class="brand-icon">
-      <i class="fa-solid fa-users-gear"></i>
+    <div class="brand-logo-container">
+      <img src="assets/images/logo.png" alt="NexByte Logo" class="brand-logo-img">
     </div>
     <div class="brand-text">
-      <h2>Apex Global HR</h2>
-      <span>Enterprise HRM</span>
+      <h2>NexByte</h2>
+      <span>Technologies Ltd.</span>
     </div>
   </div>
 
-  <!-- Menu Links -->
+  <!-- Menu Links (Compact & No-Scroll) -->
   <div class="sidebar-menu">
     <div class="menu-category">Main Dashboard</div>
     <a href="index.php" class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">
@@ -58,12 +59,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
   <!-- Footer Admin Profile -->
   <div class="sidebar-footer">
     <div class="user-card">
-      <img src="assets/pic.jpeg" alt="HR Director">
+      <img src="assets/pic.jpeg" alt="Admin Avatar">
       <div class="user-info">
         <div class="name">Md Sojib Ahmed</div>
-        <div class="role">Chief HR Officer</div>
+        <div class="role">Admin &bull; NexByte</div>
       </div>
     </div>
   </div>
 </aside>
-
