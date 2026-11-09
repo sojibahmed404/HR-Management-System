@@ -48,20 +48,20 @@ include_once 'includes/header.php';
 ?>
 
 <!-- Filter & Search Toolbar -->
-<div class="app-card" style="margin-bottom:20px;">
-  <div style="padding:18px 24px;">
-    <form method="GET" action="employees.php" style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between;">
+<div class="app-card" style="margin-bottom:18px;">
+  <div style="padding:14px 20px;">
+    <form method="GET" action="employees.php" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
       
-      <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; flex:1;">
+      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; flex:1;">
         <!-- Search Input -->
-        <div style="position:relative; min-width:260px;">
-          <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search by name, ID, or email..." class="form-control" style="padding-left:36px;">
-          <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:12px; color:var(--slate-400);"></i>
+        <div style="position:relative; min-width:240px;">
+          <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search name, ID, or email..." class="form-control" style="padding-left:34px; padding-top:7px; padding-bottom:7px; font-size:0.82rem;">
+          <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:10px; color:var(--slate-400); font-size:0.8rem;"></i>
         </div>
 
         <!-- Department Filter -->
-        <div style="min-width:200px;">
-          <select name="dept" class="form-select" onchange="this.form.submit()">
+        <div style="min-width:180px;">
+          <select name="dept" class="form-select" onchange="this.form.submit()" style="padding-top:7px; padding-bottom:7px; font-size:0.82rem;">
             <option value="0">All Departments</option>
             <?php if ($all_depts): ?>
               <?php while ($d = mysqli_fetch_assoc($all_depts)): ?>
@@ -73,19 +73,19 @@ include_once 'includes/header.php';
           </select>
         </div>
 
-        <button type="submit" class="btn-primary-custom" style="padding:9px 16px;">
-          <i class="fa-solid fa-filter"></i> Apply
+        <button type="submit" class="btn-primary-custom" style="padding:7px 14px; font-size:0.82rem;">
+          <i class="fa-solid fa-filter"></i> Filter
         </button>
 
         <?php if ($dept_filter > 0 || !empty($search)): ?>
-          <a href="employees.php" class="btn-secondary-custom" style="padding:9px 14px;">
+          <a href="employees.php" class="btn-secondary-custom" style="padding:7px 12px; font-size:0.82rem;">
             <i class="fa-solid fa-rotate-left"></i> Reset
           </a>
         <?php endif; ?>
       </div>
 
       <div>
-        <a href="add_employee.php" class="btn-primary-custom">
+        <a href="add_employee.php" class="btn-primary-custom" style="padding:7px 14px; font-size:0.82rem;">
           <i class="fa-solid fa-user-plus"></i> New Employee
         </a>
       </div>
@@ -96,10 +96,10 @@ include_once 'includes/header.php';
 
 <!-- Employee List Table -->
 <div class="app-card">
-  <div class="card-header-custom">
+  <div class="card-header-custom" style="padding:14px 20px;">
     <div>
-      <div class="card-title">All Employees</div>
-      <div class="card-subtitle">Showing registered staff records</div>
+      <div class="card-title" style="font-size:0.95rem;">All Employees</div>
+      <div class="card-subtitle" style="font-size:0.75rem;">Showing registered staff records</div>
     </div>
   </div>
 
@@ -107,14 +107,14 @@ include_once 'includes/header.php';
     <table class="custom-table">
       <thead>
         <tr>
+          <th style="width:50px;">ID</th>
           <th>Employee Details</th>
-          <th>Department</th>
-          <th>Designation</th>
-          <th>Contact</th>
+          <th>Department & Role</th>
+          <th>Contact Info</th>
           <th>Join Date</th>
-          <th>Monthly Salary</th>
+          <th>Monthly Compensation</th>
           <th>Status</th>
-          <th style="text-align:right;">Actions</th>
+          <th style="text-align:right; width:80px;">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -128,30 +128,34 @@ include_once 'includes/header.php';
           ?>
             <tr>
               <td>
+                <span style="font-weight:700; color:var(--slate-500); font-size:0.78rem;">#<?php echo $row['employee_id']; ?></span>
+              </td>
+              <td>
                 <div class="employee-cell">
                   <div class="avatar-badge"><?php echo $initials; ?></div>
                   <div>
                     <div class="emp-name"><?php echo htmlspecialchars($row['employee_name']); ?></div>
-                    <div class="emp-role">ID: #<?php echo $row['employee_id']; ?></div>
                   </div>
                 </div>
               </td>
               <td>
-                <span class="badge-custom badge-active">
+                <span class="badge-custom badge-active" style="margin-bottom:3px; display:inline-block;">
                   <?php echo htmlspecialchars($row['department_name'] ?? 'Unassigned'); ?>
                 </span>
+                <div style="font-size:0.74rem; color:var(--slate-600); font-weight:600;"><?php echo htmlspecialchars($row['designation'] ?? 'Specialist'); ?></div>
               </td>
-              <td><strong><?php echo htmlspecialchars($row['designation'] ?? 'Specialist'); ?></strong></td>
               <td>
-                <div><i class="fa-regular fa-envelope me-1 text-muted"></i><?php echo htmlspecialchars($row['email']); ?></div>
-                <div style="font-size:0.75rem; color:var(--slate-500); margin-top:2px;">
+                <div style="font-size:0.78rem;"><i class="fa-regular fa-envelope me-1 text-muted"></i><?php echo htmlspecialchars($row['email']); ?></div>
+                <div style="font-size:0.72rem; color:var(--slate-500); margin-top:2px;">
                   <i class="fa-solid fa-phone me-1 text-muted"></i><?php echo htmlspecialchars($row['phone'] ?? 'N/A'); ?>
                 </div>
               </td>
-              <td><?php echo htmlspecialchars($row['hire_date'] ?? 'N/A'); ?></td>
+              <td style="font-size:0.78rem; color:var(--slate-600);">
+                <?php echo htmlspecialchars($row['hire_date'] ?? 'N/A'); ?>
+              </td>
               <td>
-                <strong><?php echo format_bdt($row['basic_salary'] ?? 0); ?></strong>
-                <div style="font-size:0.72rem; color:var(--success);">+ <?php echo format_bdt($row['bonus'] ?? 0); ?> bonus</div>
+                <div style="font-weight:700; color:var(--slate-900); font-size:0.82rem;"><?php echo format_bdt($row['basic_salary'] ?? 0); ?></div>
+                <div style="font-size:0.7rem; color:var(--success); font-weight:600;">+ <?php echo format_bdt($row['bonus'] ?? 0); ?> bonus</div>
               </td>
               <td>
                 <span class="badge-custom <?php echo $badge; ?>">
@@ -159,7 +163,7 @@ include_once 'includes/header.php';
                 </span>
               </td>
               <td style="text-align:right;">
-                <div class="action-btn-group" style="justify-content:flex-end;">
+                <div class="action-btn-group" style="justify-content:flex-end; gap:5px;">
                   <a href="edit_employee.php?id=<?php echo $row['employee_id']; ?>" class="btn-icon btn-icon-edit" title="Edit Employee">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </a>
@@ -172,7 +176,7 @@ include_once 'includes/header.php';
           <?php endwhile; ?>
         <?php else: ?>
           <tr>
-            <td colspan="8" style="text-align:center; padding:40px; color:var(--slate-400);">
+            <td colspan="8" style="text-align:center; padding:30px; color:var(--slate-400);">
               No employees matched your filter criteria.
             </td>
           </tr>
@@ -183,4 +187,3 @@ include_once 'includes/header.php';
 </div>
 
 <?php include_once 'includes/footer.php'; ?>
-
