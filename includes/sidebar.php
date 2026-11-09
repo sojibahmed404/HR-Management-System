@@ -52,7 +52,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <div class="menu-category">Analytics & Reports</div>
     <a href="reports.php" class="nav-link <?php echo ($current_page == 'reports.php') ? 'active' : ''; ?>">
       <i class="fa-solid fa-file-invoice"></i>
-      <span>HR Reports & Queries</span>
+      <span>HR Reports & Analytics</span>
     </a>
   </div>
 
